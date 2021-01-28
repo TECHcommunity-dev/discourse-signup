@@ -21,10 +21,9 @@
     //-----------------------------------------[ combo-box component ]---------------------------------------------------------------------
     //Modify combo-box component to add Country logic for State and Province on Create Account page [By Webdirekt on 12-11-2020]
     api.modifyClass('component:combo-box',{
-          actions: {
-            //Added by Webdirket on 12-11-2020
-            //onChange action method to hide/show State/Province User Field based on selected Country 
-            onChange(value) {
+          //Modified by Webdirket on 28-01-2021 (We have replaced the onChange action method by _onChange method)
+            //_onChange method to hide/show State/Province User Field based on selected Country 
+            _onChange(value) {
                 let currentUserFieldId = this.userFieldId;
                 if(currentUserFieldId){
                     //If Current user fields is Country
@@ -55,7 +54,6 @@
                 }
                 return true; 
             },
-          },
 
     });
     //----------------------------------------------------[ END OF: combo-box component ]----------------------------------------------------------
@@ -249,7 +247,6 @@
         nameProperty=null
         value=this.value
         none=this.noneLabel
-        onChange=(action (mut this.value))
         userFieldId=this.field.id
       }}
       <div class="instructions">{{html-safe this.field.description}}</div>
