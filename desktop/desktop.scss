@@ -86,3 +86,9 @@
           grid-template-columns: 70% 30% !important;
      }
 }
+@media screen and (min-width: 500px)
+     .login-modal .tip, .create-account .tip {
+          min-width: 100% !important;
+          max-width: 250px !important;
+     }
+}
