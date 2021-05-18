@@ -1,35 +1,43 @@
-.d-modal.create-account .user-field.user-field-state,.d-modal.create-account .user-field.user-field-province{
-    display: none;
-}
-
-.d-modal.create-account div.hide-new-account-name{
-    display: none !important;
-}
-
-.create-account .wp-column .instructions label{
-    min-height: 1.75em;    
-}
-
-.create-account .wp-column .instructions{
-    min-height: 1.75em;    
-}
-
-@media  (max-width:961px)  { 
-    .wp-column {
-      width: 100% !important;
+.d-modal.create-account .login-form form{
+    .input-group:nth-child(3), .user-fields{
+        display:none !important;
     }
-    
-    .wp-row {
-      display: flex;
-      flex-direction: column;
+    .input-group.create-account-state,.input-group.create-account-province{
+        display: none;
     }
-    
-    .create-account .user-field .controls{
-     padding-top: 0px;   
+    .input-group.create-account-country,.input-group.create-account-state,.input-group.create-account-province{
+        label{
+            display: none;
+        }
     }
-}
-
-/* Hide the Location and Website Fileds the User preferences-> location /preferences/profile [By Webdirekt on 19-11-2020] */
-.user-content.user-preferences .control-group.pref-location, .user-content.user-preferences .control-group.pref-website{
-    display: none;
+    .select-kit-header.single-select-header.combo-box-header{
+        padding: 0.72em 0.77em;
+        border-radius: 0.25em;
+        min-width: 250px;
+        box-shadow: none;
+        margin-bottom: 0.25em;
+        
+        &[data-value|=""] {
+            color: var(--primary-medium);
+        }  
+        &[data-value|=""] span.name::after {
+            content:"*";
+            vertical-align: top;
+            color: var(--danger);
+            font-weight: bold;
+            margin-left: 0.25em;
+        }
+     }
+    .user-field .select-kit{
+        z-index: 99999;
+    }
+    //To hide the astric sign after email, username and password filed which was previously added by Softwareag team. 
+    //As new newer release Discourse Team added astric sign in discourse source code.
+    label[for="new-account-email"],
+    label[for="new-account-username"],
+    label[for="new-account-password"] {
+        &:after {
+            display: none !important;
+        }
+    }
 }
