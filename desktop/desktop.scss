@@ -1,47 +1,88 @@
-.create-account .user-field>label{
-    padding-top: 0px;
+//Display Create Account Modal with 88% width if screen is less than 680px
+@media (max-width: 680px){
+     .d-modal.create-account{
+          .modal-inner-container{
+               max-width: 88%;
+          }
+          .create-account-body{
+               min-width: 88% !important;
+          }
+          .has-alt-auth {
+               .login-form{
+                    .input-group{
+                         input:not(.value-entered):not(:focus)+label.alt-placeholder{
+                              left: 3em;
+                         }
+                         input:focus+label.alt-placeholder,input.value-entered+label.alt-placeholder{
+                              left: calc(3em - 0.25em);
+                         }
+                    }
+               }
+          } 
+     }
 }
 
-.create-account .user-field>label, .create-account .user-field .controls{
-    padding-top: 0px;
+//Display Create Account Modal with below styling when device size is greater then 900px
+@media (min-width: 900px) {
+     .d-modal.create-account{
+          .login-form form{
+               display: grid;
+               grid-template-columns: auto auto;
+          }
+          .modal-inner-container{
+               max-width: 825px;
+          }
+          .create-account-body{
+               min-width: 825px !important;
+          }
+          .has-alt-auth {
+               .login-form{
+                    .input-group{
+                         padding: 0 1em;
+                         input:not(.value-entered):not(:focus)+label.alt-placeholder{
+                              left: 2em;
+                         }
+                         input:focus+label.alt-placeholder,input.value-entered+label.alt-placeholder{
+                              left: calc(2em - 0.25em);
+                         }
+                    }
+               }
+          } 
+     }
+     .d-modal.create-account .has-alt-auth .create-account-form{
+          grid-template-columns: 70% 30% !important;
+     }
 }
 
-.d-modal.create-account .instructions{
-    margin-bottom: 5px;
-    margin-top: 0.15em;
-}
-
-.modal.create-account .modal-inner-container{
-    max-width: 900px;
-    min-width: 550px;
-    width: 80%;
-}
-
-.d-modal.create-account div.input input, .d-modal.create-account div.input label {
-    margin-bottom: 0;
-    width: 100%;
-}
-
-.login-form .tip:not(:empty)+div {
-    display: none;
-}
-
-.modal div.instructions label {
-    color: var(--primary-medium);
-}
-
-.wp-row:after {
-  content: "";
-  display: table;
-  clear: both;
-}   
-
-/* Create two equal columns that sits next to each other */
-.wp-column {
-  float: left;
-  width: 50%;
-}
-
-div.wp-column > div {
-  padding: 0 10px;
+//Display Create Account Modal with below styling when device size is greater then 600px
+@media (min-width: 680px) and (max-width: 900px) {
+     .d-modal.create-account{
+          .login-form form{
+               .input-group {
+                    padding: 0 2em;
+               }
+          }
+          .modal-inner-container{
+               max-width: 600px;
+          }
+          .create-account-body{
+               min-width: 600px !important;
+          }
+          .has-alt-auth {
+               .login-form{
+                    .input-group{
+                         padding: 0 1em;
+                         input:not(.value-entered):not(:focus)+label.alt-placeholder{
+                              left: 2em;
+                         }
+                         input:focus+label.alt-placeholder,input.value-entered+label.alt-placeholder{
+                              left: calc(2em - 0.25em);
+                         }
+                    }
+               }
+          } 
+     }
+     .d-modal.create-account .has-alt-auth .create-account-form{
+          grid-template-columns: 70% 30% !important;
+     }
 }
