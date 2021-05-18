@@ -1,0 +1,22 @@
+<!-- Modify user-fields/dropdown component template to add two attributes (filterable and userFieldId) to combo-box [By Webdirekt on 26-04-2021] -->
+<label class="control-label" for={{concat "user-" this.elementId}}>
+  {{html-safe this.field.name}}
+  {{#if this.field.required}}
+    <span class="required">*</span>
+  {{/if}}
+</label>
+
+<div class="controls">
+  {{combo-box
+    id=(concat "user-" this.elementId)
+    content=this.field.options
+    valueProperty=null
+    nameProperty=null
+    value=this.value
+    none=this.noneLabel
+    onChange=(action (mut this.value))
+    filterable=true
+    userFieldId=this.field.id
+  }}
+  <div class="instructions">{{html-safe this.field.description}}</div>
+</div>
