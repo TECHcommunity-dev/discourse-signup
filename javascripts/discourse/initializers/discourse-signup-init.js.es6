@@ -187,7 +187,7 @@ export default {
                 //Validate First name
                 if(firstNameField){ 
                     const val = firstNameField.get("value");
-                    if(!val || isEmpty(val)){
+                    if(!val || isEmpty(val.trim())){
                     return EmberObject.create({
                         failed: true,
                         message: I18n.t("user_fields.required", { name: firstNameField.field.name }),
@@ -198,7 +198,7 @@ export default {
                 //Validate Last name
                 if(lastNameField){
                     const val = lastNameField.get("value");
-                    if(!val || isEmpty(val)){
+                    if(!val || isEmpty(val.trim())){
                     return EmberObject.create({
                         failed: true,
                         message: I18n.t("user_fields.required", { name: lastNameField.field.name }),
@@ -222,7 +222,7 @@ export default {
                   if(bannedCountries.find(country => country.toLowerCase() == countryValue.toLowerCase())){
                     const companyValue = companyField.get("value");
                     //If Company is not provided then return an error message for Company field
-                    if(!companyValue || isEmpty(companyValue)){
+                    if(!companyValue || isEmpty(companyValue.trim())){
                        return EmberObject.create({
                             failed: true,
                             message: I18n.t("user_fields.required", { name: companyField.field.name }),
