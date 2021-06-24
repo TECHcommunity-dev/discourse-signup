@@ -46,19 +46,21 @@ export default {
                         /**
                         * Banned Country logic [Added by: Saurabh; Date: 21-06-2021]
                         **/
-                        //If selected Country is a banned country then make Company field mandatory
-                        if(value){
-                          //If the selected Country is a banned country then set the asterisk sign for the Company field.
-                          if(bannedCountries.find(country => country.toLowerCase() == value.toLowerCase())){
-                            document.querySelector('label[for="new-account-company"]').setAttribute('data-value', '*');
+                        if(document.querySelector('label[for="new-account-company"]')){
+                          //If selected Country is a banned country then make Company field mandatory
+                          if(value){
+                            //If the selected Country is a banned country then set the asterisk sign for the Company field.
+                            if(bannedCountries.find(country => country.toLowerCase() == value.toLowerCase())){
+                              document.querySelector('label[for="new-account-company"]').setAttribute('data-value', '*');
+                            }
+                            else{ //Remove the asterisk sign for the Company field if select Country is not banned
+                              document.querySelector('label[for="new-account-company"]').setAttribute('data-value', '');
+                            }
                           }
-                          else{ //Remove the asterisk sign for the Company field if select Country is not banned
-                            document.querySelector('label[for="new-account-company"]').setAttribute('data-value', '');
+                          else{ //Remove the asterisk sign for the Company field is un-selected
+                              document.querySelector('label[for="new-account-company"]').setAttribute('data-value', '');
                           }
                         }
-                        else{ //Remove the asterisk sign for the Company field is un-selected
-                            document.querySelector('label[for="new-account-company"]').setAttribute('data-value', '');
-                         }
                       
                         //If Country is USA, then show State dropdown and hide Province dropdown
                         if(value){
