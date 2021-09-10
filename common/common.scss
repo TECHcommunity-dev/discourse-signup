@@ -31,6 +31,10 @@
     .user-field .select-kit{
         z-index: 99999;
     }
+    //To make the height of the dropdown field same as text input fields [Added by: Saurabh; Date: 10-09-2021]
+    .user-field.dropdown .select-kit .select-kit-header .select-kit-header-wrapper{
+        min-height: auto !important;
+    }
     label.more-info{
         color: var(--primary-medium) !important;
     }
@@ -52,6 +56,19 @@
             font-weight: bold;
             margin-left: 0.25em;
         }
+    }
+    //To have less space between fields in signup modal [Added by: Saurabh; Date: 10-09-2021]
+    .input-group {
+        margin-bottom: 0.5em !important;
+    }
+}
+
+/* Apply CSS for the “Create your account” link on Signup form [Added by Ajroddin; Date: 10/09/2021] */
+.d-modal.create-account {
+    //To have the Log In button with green background in signup modal [Added by: Saurabh; Date: 10-09-2021]
+    button#login-link{
+        background-color: #D9EC27 !important;
+        color: #011f3d;
     }
 }
 
