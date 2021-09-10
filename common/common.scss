@@ -31,6 +31,9 @@
     .user-field .select-kit{
         z-index: 99999;
     }
+    label.more-info{
+        color: var(--primary-medium) !important;
+    }
     //To hide the astric sign after email, username and password filed which was previously added by Softwareag team. 
     //As new newer release Discourse Team added astric sign in discourse source code.
     label[for="new-account-email"],
@@ -49,5 +52,21 @@
             font-weight: bold;
             margin-left: 0.25em;
         }
+    }
+}
+
+/* Apply CSS for the “Create your account” and "I forgot my password" links on login form [Added by Ajroddin; Date: 10/09/2021] */
+.d-modal.login-modal{
+    //Style for “Create your account” link 
+    #new-account-link{
+        background-color: #D9EC27;
+        padding-left: 18px !important;
+        color: #011f3d !important;
+    }      
+    //Style for "I forgot my password" link 
+    #forgot-password-link{
+        font-weight: bold;
+        color:#0d5752;
+        font-size: 1.1em !important; 
     }
 }
