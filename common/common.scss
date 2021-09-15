@@ -1,5 +1,8 @@
 .d-modal.create-account .login-form {
     padding: 1em 0 0 1em !important;
+    @include breakpoint(mobile-large) { 
+        padding: 1em !important;
+    }
     form{
         .input-group:nth-child(3), .user-fields{
             display:none !important;
