@@ -1,65 +1,92 @@
-.d-modal.create-account .login-form form{
-    .input-group:nth-child(3), .user-fields{
-        display:none !important;
-    }
-    .input-group.create-account-state,.input-group.create-account-province{
-        display: none;
-    }
-    .input-group.create-account-country,.input-group.create-account-state,.input-group.create-account-province{
-        label{
+.d-modal.create-account .login-form {
+    padding: 1em 0 0 1em !important;
+    form{
+        .input-group:nth-child(3), .user-fields{
+            display:none !important;
+        }
+        .input-group.create-account-state,.input-group.create-account-province{
             display: none;
         }
-    }
-    .select-kit-header.single-select-header.combo-box-header{
-        padding: 0.72em 0.77em;
-        border-radius: 0.25em;
-        min-width: 250px;
-        box-shadow: none;
-        margin-bottom: 0.25em;
-        
-        &[data-value|=""] {
-            color: var(--primary-medium);
-        }  
-        &[data-value|=""] span.name::after {
-            content:"*";
-            vertical-align: top;
-            color: var(--danger);
-            font-weight: bold;
-            margin-left: 0.25em;
+        .input-group.create-account-country,.input-group.create-account-state,.input-group.create-account-province{
+            label{
+                display: none;
+            }
         }
-     }
-    .user-field .select-kit{
-        z-index: 99999;
-    }
-    //To make the height of the dropdown field same as text input fields [Added by: Saurabh; Date: 10-09-2021]
-    .user-field.dropdown .select-kit .select-kit-header .select-kit-header-wrapper{
-        min-height: auto !important;
-    }
-    label.more-info{
-        color: var(--primary-medium) !important;
-    }
-    //To hide the astric sign after email, username and password filed which was previously added by Softwareag team. 
-    //As new newer release Discourse Team added astric sign in discourse source code.
-    label[for="new-account-email"],
-    label[for="new-account-username"],
-    label[for="new-account-password"] {
-        &:after {
-            display: none !important;
+        .select-kit-header.single-select-header.combo-box-header{
+            padding: 0.72em 0.77em;
+            border-radius: 0.25em;
+            //Modified to make the drop-down input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
+            min-width: 230px;
+            width: 230px !important;
+            @include breakpoint(tablet) {
+                min-width: 250px;
+                width: 100% !important;
+            }
+            box-shadow: none;
+            margin-bottom: 0.25em;
+
+            &[data-value|=""] {
+                color: var(--primary-medium);
+            }  
+            &[data-value|=""] span.name::after {
+                content:"*";
+                vertical-align: top;
+                color: var(--danger);
+                font-weight: bold;
+                margin-left: 0.25em;
+            }
+         }
+        .user-field .select-kit{
+            z-index: 99999;
         }
-    }
-    //To add the asterisk sign after Company if select Country is Banned. [Added by Saurabh; Date: 22/06/2021]
-    label[for="new-account-company"]{
-        &::after{
-            content: attr(data-value);
-            vertical-align: top;
-            color: var(--danger);
-            font-weight: bold;
-            margin-left: 0.25em;
+        //To make the height of the dropdown field same as text input fields [Added by: Saurabh; Date: 10-09-2021]
+        .user-field.dropdown .select-kit .select-kit-header .select-kit-header-wrapper{
+            min-height: auto !important;
         }
-    }
-    //To have less space between fields in signup modal [Added by: Saurabh; Date: 10-09-2021]
-    .input-group {
-        margin-bottom: 0.5em !important;
+        label.more-info{
+            color: var(--primary-medium) !important;
+        }
+        //To hide the astric sign after email, username and password filed which was previously added by Softwareag team. 
+        //As new newer release Discourse Team added astric sign in discourse source code.
+        label[for="new-account-email"],
+        label[for="new-account-username"],
+        label[for="new-account-password"] {
+            &:after {
+                display: none !important;
+            }
+        }
+        //To add the asterisk sign after Company if select Country is Banned. [Added by Saurabh; Date: 22/06/2021]
+        label[for="new-account-company"]{
+            &::after{
+                content: attr(data-value);
+                vertical-align: top;
+                color: var(--danger);
+                font-weight: bold;
+                margin-left: 0.25em;
+            }
+        }
+        //To have less space between fields in signup modal [Added by: Saurabh; Date: 10-09-2021]
+        .input-group {
+            margin-bottom: 0.5em !important;
+            //Added to make the input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
+            input {
+                min-width: 230px;
+                width: 230px !important;
+                @include breakpoint(tablet) {
+                    min-width: 250px;
+                    width: 100% !important;
+                }
+            }
+        }
+        //Added to make the input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
+        .tip {
+            min-width: 230px;
+            width: 230px !important;
+            @include breakpoint(tablet) {
+                min-width: 250px;
+                width: 100% !important;
+            }
+        }
     }
 }
 
