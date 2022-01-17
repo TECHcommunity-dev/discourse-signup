@@ -113,22 +113,6 @@
     }
 }
 
-/* Apply CSS for the “Create your account” and "I forgot my password" links on login form [Added by Ajroddin; Date: 10/09/2021] */
-.d-modal.login-modal{
-    //Style for “Create your account” link 
-    #new-account-link{
-        background-color: var(--highlight);
-        padding-left: 18px !important;
-        color: #011f3d !important;
-    }      
-    //Style for "I forgot my password" link 
-    #forgot-password-link{
-        font-weight: bold;
-        color:#0d5752;
-        font-size: 1.1em !important; 
-    }
-}   
-
 //------------- End Of Signup Model Popup Changes ---------------//
 
 //------------- Login Model Popup Changes ---------------//
