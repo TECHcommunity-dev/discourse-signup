@@ -115,7 +115,7 @@
 
 //------------- End Of Signup Model Popup Changes ---------------//
 
-//------------- Login Model Popup Changes ---------------//
+//------------- Invite Signup form Changes ---------------//
 
 //Created on: 05/05/20021
 //Hide the unnecessary input fields on invites signup page
@@ -136,8 +136,11 @@
     form {
         margin-bottom: 200px;
     }
+    //Remove the bottom marging of the input .user-fields
+    input-group {
+        margin-bottom: none !important;
+    }
     //Increased the width of dropdown to match with the text input fileds on invites signup page
-
     input[type="text"],
     input[type="password"],
     input[type="email"],
@@ -173,4 +176,4 @@ label[for="new-account-password"] {
     }
 }
 
-//------------- End Of Login Model Popup Changes ---------------//
+//------------- End Of Invite Signup form Changes ---------------//
