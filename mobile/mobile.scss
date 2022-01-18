@@ -2,11 +2,17 @@
 
 //------------- Signup Model Popup Changes ---------------//
 
-.d-modal.create-account .login-form form{
-     display: flex;
-     .select-kit-header.single-select-header.combo-box-header{
-         height: 2.5em; 
-     }
+.d-modal.create-account {
+    .login-welcome-header {
+        z-index: 999;
+    }
+    .login-form form {
+        display: flex;
+
+        .select-kit-header.single-select-header.combo-box-header {
+            height: 2.5em;
+        }
+    }
 }
 
 //------------- End Of Signup Model Popup Changes ---------------//
