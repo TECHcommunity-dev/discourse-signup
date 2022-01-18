@@ -138,7 +138,7 @@
     }
     //Remove the bottom marging of the input
     .input-group {
-        margin-bottom: none !important;
+        margin-bottom: unset !important;
     }
     //Increased the width of dropdown to match with the text input fileds on invites signup page
     input[type="text"],
