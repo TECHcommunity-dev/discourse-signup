@@ -1,3 +1,6 @@
+//discourse-signup - common-scss
+
+//------------- Signup Model Popup Changes ---------------//
 .d-modal.create-account .login-form {
     padding: 1em 0 0 1em !important;
     @include breakpoint(mobile-large) { 
@@ -105,23 +108,75 @@
 .d-modal.create-account {
     //To have the Log In button with green background in signup modal [Added by: Saurabh; Date: 10-09-2021]
     button#login-link{
-        background-color: #D9EC27 !important;
+        background-color: var(--highlight) !important;
         color: #011f3d;
     }
 }
 
-/* Apply CSS for the “Create your account” and "I forgot my password" links on login form [Added by Ajroddin; Date: 10/09/2021] */
-.d-modal.login-modal{
-    //Style for “Create your account” link 
-    #new-account-link{
-        background-color: #D9EC27;
-        padding-left: 18px !important;
-        color: #011f3d !important;
-    }      
-    //Style for "I forgot my password" link 
-    #forgot-password-link{
-        font-weight: bold;
-        color:#0d5752;
-        font-size: 1.1em !important; 
+//------------- End Of Signup Model Popup Changes ---------------//
+
+//------------- Invite Signup form Changes ---------------//
+
+//Created on: 05/05/20021
+//Hide the unnecessary input fields on invites signup page
+//Add terms of service Checkbox after Province user-field  [Added by Ajroddin; Date: 05/10/2021]
+.invites-show
+    .user-fields
+    .user-field:not(.user-field-first-name, .user-field-last-name, .user-field-country, .user-field-company, .user-field-terms-of-service) {
+    display: none;
+}
+.invites-show {
+    @include breakpoint(mobile-large) {
+        .col-form{
+            flex-basis: 100%;
+        }
+    }
+    
+    //Apply bottom margin to the invites signup form to avoid overlapping of the cookies notice on the form [Added By: Saurabh, Date: 14/05/2021]
+    form {
+        margin-bottom: 200px;
+        .input {
+            margin-bottom: 10px !important;
+        }
+    }
+    //Remove the bottom marging of the input
+    .input-group {
+        margin-bottom: unset !important;
+    }
+    //Increased the width of dropdown to match with the text input fileds on invites signup page
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    .user-field.dropdown .select-kit.single-select {
+        width: 80%;
+        max-width: 300px;
+        @include breakpoint(mobile-large) {
+            max-width: 100%;
+        }
+    }
+    //Set top margin to label of the dropdown button on invites signup page
+    .user-field.dropdown .instructions {
+        margin-top: 0.5em;
+    }
+    //Hide full name input field on the invites signup page
+    .name-input {
+        display: none !important;
+    }
+    .tip {
+        display: block;
+    }
+    .tip:empty {
+        display: none;
     }
 }
+//To hide the astric sign after email, username and password filed which was previously added by Softwareag team.
+//As new newer release Discourse Team added astric sign in discourse source code.
+label[for="new-account-email"],
+label[for="new-account-username"],
+label[for="new-account-password"] {
+    &:after {
+        display: none !important;
+    }
+}
+
+//------------- End Of Invite Signup form Changes ---------------//

@@ -1,3 +1,7 @@
+//discourse-signup - desktop.scss
+
+//------------- Signup Model Popup Changes ---------------//
+
 //Display Create Account Modal with 88% width if screen is less than 680px
 @media (max-width: 680px){
      .d-modal.create-account{
@@ -96,8 +100,11 @@
 .d-modal.create-account { 
      .login-welcome-header{
           padding: 1em 2em 1em !important;
+          max-width: 100% !important; // Fix the signup form width issue occurred after the discours updated. [Added by: Saurabh; Date: 18-01-2022] 
      }
      .modal-body{
           display: flex !important;
      }
 }
+
+//------------- End Of Signup Model Popup Changes ---------------//
