@@ -135,6 +135,9 @@
     //Apply bottom margin to the invites signup form to avoid overlapping of the cookies notice on the form [Added By: Saurabh, Date: 14/05/2021]
     form {
         margin-bottom: 200px;
+        .input {
+            margin-bottom: 10px !important;
+        }
     }
     //Remove the bottom marging of the input
     .input-group {
