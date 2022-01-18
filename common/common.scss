@@ -160,7 +160,7 @@
     }
     //Hide full name input field on the invites signup page
     .name-input {
-        display: none;
+        display: none !important;
     }
     .tip {
         display: block;
