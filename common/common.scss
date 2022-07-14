@@ -7,7 +7,7 @@
         padding: 1em !important;
     }
     form{
-        .input-group:nth-child(3), .user-fields{
+        .input-group.create-account__fullname, .user-fields{
             display:none !important;
         }
         .input-group.create-account-state,.input-group.create-account-province{
@@ -112,6 +112,28 @@
         color: #011f3d;
     }
 }
+
+/*Google OAuth Signup Model Popup Changes*/
+.d-modal.create-account .create-account-form.google_oauth2 .login-form {
+    form{
+        .input-group.create-account-associate-link {
+            grid-column: 1 / 3;
+            padding-bottom: 1em;
+        }
+        .input-group.create-account__password {
+            display:none !important;
+        }
+        .create-account-terms-of-service {
+            grid-column: 1;
+            padding: 0 2em;
+            margin-left: 0;
+            @include breakpoint(mobile-large) {
+                padding: 0 0;
+            }
+        }
+    }
+}
+/*End Of Google OAuth Signup Model Popup Changes*/
 
 //------------- End Of Signup Model Popup Changes ---------------//
 
