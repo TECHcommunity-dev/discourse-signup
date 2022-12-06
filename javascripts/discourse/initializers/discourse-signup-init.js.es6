@@ -194,7 +194,7 @@ export default {
                     if(field_id) {
                         if(field_id == COUNTRY_FIELD_ID || field_id == STATE_FIELD_ID || field_id == PROVINCE_FIELD_ID){
                             if(!uf.value && uf.validation && uf.validation.failed) {
-                                uf.validation.set("reason",`Please select "${uf.field.name}"`);
+                                uf.validation.set("reason",`Please select a "${uf.field.name}"`);
                             }
                         }
                         //If current User Field is Terms of service
