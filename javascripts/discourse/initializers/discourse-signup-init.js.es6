@@ -19,6 +19,8 @@ export default {
     let LAST_NAME_FIELD_ID;
     const COMPANY_FIELD_NAME = "Company";
     let COMPANY_FIELD_ID; 
+    const TERMS_OF_SERVICE_FIELD_NAME = "Terms of service";
+    let TERMS_OF_SERVICE_FIELD_ID; 
      
     
     //Required Country and Sate/Province Fields values
@@ -34,6 +36,7 @@ export default {
     withPluginApi("0.8", (api) => {
         //Modify combo-box component to add Country logic for State and Province on Create Account page [By Webdirekt on 12-11-2020]
         api.modifyClass('component:combo-box',{
+            pluginId : 'techcommunity-combo-box',
             //Modified by Webdirket on 28-01-2021 (We have replaced the onChange action method by _onChange method)
             //_onChange method to hide/show State/Province User Field based on selected Country 
             _onChange(value) {
@@ -110,6 +113,7 @@ export default {
         //Modify create-account controller to add Country logic for State and Province on Create Account page [By Webdirekt on 12-11-2020]
         //Modify create-account controller to customize UI of Create User Form [18-11-2020].
         api.modifyClass('controller:create-account',{
+            pluginId: 'techcommunity-signup',
             firstNameField : null,
             lastNameField : null,
             companyField: null,
@@ -182,37 +186,63 @@ export default {
                     } 
                 }
             },
+            processUserFieldValidationMessages() {
+                const DROPDOWN_VALIDATION_ERROR_MESSAGE = ``;
+                this.userFields.find((uf) => {
+                    const field_id = uf.field.id;
+                    //If current User Field is Country/State/Province
+                    if(field_id) {
+                        if(field_id == COUNTRY_FIELD_ID || field_id == STATE_FIELD_ID || field_id == PROVINCE_FIELD_ID){
+                            if(!uf.value && uf.validation && uf.validation.failed) {
+                                uf.validation.set("reason",`Please select "${uf.field.name}"`);
+                            }
+                        }
+                        //If current User Field is Terms of service
+                        if(field_id == TERMS_OF_SERVICE_FIELD_ID){
+                            if(!uf.value && uf.validation && uf.validation.failed) {
+                                uf.validation.set("reason",`Please accept "${uf.field.name}"`);
+                            }
+                        }
+                    }
+                });
+            },
             //Method to Validate First name and Last name
             firstAndLastNameValidation(){
+                let validation = EmberObject.create({ ok: true });
                 const firstNameField = this.get("firstNameField");
                 const lastNameField = this.get("lastNameField");
                 //Validate First name
                 if(firstNameField){ 
                     const val = firstNameField.get("value");
                     if(!val || isEmpty(val.trim())){
-                    return EmberObject.create({
-                        failed: true,
-                        message: I18n.t("user_fields.required", { name: firstNameField.field.name }),
-                        element: document.querySelector("#new-account-firstname"),
-                        });
+                        validation = EmberObject.create({
+                                failed: true,
+                                reason: I18n.t("user_fields.required", { name: firstNameField.field.name }),
+                                element: document.querySelector("#new-account-firstname"),
+                                });
+                        this.firstNameField.set("validation", validation);
+                        return validation;
                     }
                 }
                 //Validate Last name
                 if(lastNameField){
                     const val = lastNameField.get("value");
                     if(!val || isEmpty(val.trim())){
-                    return EmberObject.create({
-                        failed: true,
-                        message: I18n.t("user_fields.required", { name: lastNameField.field.name }),
-                        element: document.querySelector("#new-account-lastname"),
-                        });
+                        validation = EmberObject.create({
+                                failed: true,
+                                reason: I18n.t("user_fields.required", { name: lastNameField.field.name }),
+                                element: document.querySelector("#new-account-lastname"),
+                                });
+                        this.lastNameField.set("validation", validation);
+                        return validation;
                     }
                 }
-                return EmberObject.create({ ok: true });
+                return validation;
             },
             //Method to Validate Company Field [Added by: Saurabh; Date:22/06/2021]
             //If User Selects banned country then Company should be provided.
             companyValidation(){
+              let validation = EmberObject.create({ ok: true });
               const companyField = this.get("companyField");
               const countryField = this.get("countryField");
               //If countryField is not null
@@ -225,16 +255,18 @@ export default {
                     const companyValue = companyField.get("value");
                     //If Company is not provided then return an error message for Company field
                     if(!companyValue || isEmpty(companyValue.trim())){
-                       return EmberObject.create({
+                        validation = EmberObject.create({
                             failed: true,
-                            message: I18n.t("user_fields.required", { name: companyField.field.name }),
+                            reason: I18n.t("user_fields.required", { name: companyField.field.name }),
                             element: document.querySelector("#new-account-company"),
                        });
+                       this.companyField.set("validation", validation);
+                       return validation;
                     }
                   }  
                 }
               }
-              return EmberObject.create({ ok: true });
+              return validation;
             },
             onShow() {
               //Called super class onShow action to grab the changes in discourse core. [09-04-2021]
@@ -254,6 +286,8 @@ export default {
                   PROVINCE_FIELD_ID = provinceField.field.id;
                   let companyField = this.userFields.find(obj => obj.field.name == COMPANY_FIELD_NAME);
                   COMPANY_FIELD_ID = companyField.field.id;
+                  let termsOfServiceField = this.userFields.find(obj => obj.field.name == TERMS_OF_SERVICE_FIELD_NAME);
+                  TERMS_OF_SERVICE_FIELD_ID = termsOfServiceField.field.id;
 
                   this.set("firstNameField", firstNameFiled);
                   this.set("lastNameField", lastNameField);
@@ -269,38 +303,37 @@ export default {
                     //Added by Webdirekt on 12-11-2020
                     //Set the value for State or Province based on Seleted Country.
                     this.processStateProvinceUserFields("pre");
-                  
+                    this.set("forceValidationReason", true);
                     const validation = [
                     this.emailValidation,
                     this.usernameValidation,
                     this.nameValidation,
                     this.firstAndLastNameValidation(),//Validating FirstName and Last Name before Password [by Webdirekt on 19-11-2020]
                     this.passwordValidation,
-                    this.companyValidation(), //Validating Company after Password [Added by: Saurabh; Date: 22/06/2021]
                     this.userFieldsValidation,
+                    this.companyValidation(), //Validating Company after Password [Added by: Saurabh; Date: 22/06/2021]
                     ].find((v) => v.failed);
             
                     if (validation) {
                         //Added by Webdirekt on 12-11-2020
                         //Reset State/Province User Field based on Selected Country if any validation Error occurred.
                         this.processStateProvinceUserFields("post");
-                        
-                    if (validation.message) {
-                        this.flash(validation.message, "error");
-                    }
-            
-                    const element = validation.element;
-                    if (element.tagName === "DIV") {
-                        if (element.scrollIntoView) {
-                        element.scrollIntoView();
+                        this.processUserFieldValidationMessages();
+                        const element = validation.element;
+                        if (element) {
+                            if (element.tagName === "DIV") {
+                            if (element.scrollIntoView) {
+                                element.scrollIntoView();
+                            }
+                            element.click();
+                            } else {
+                            element.focus();
+                            }
                         }
-                        element.click();
-                    } else {
-                        element.focus();
+
+                        return;
                     }
-            
-                      return;
-                    }
+                    this.set("forceValidationReason", false);
                     //Called super class createAccount action to grab the changes in discourse core. [09-04-2021]
                     this._super(...arguments);
                 },

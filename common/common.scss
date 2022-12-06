@@ -28,7 +28,6 @@
         }
         .select-kit-header.single-select-header.combo-box-header{
             padding: 0.72em 0.77em;
-            border-radius: 0.25em;
             //Modified to make the drop-down input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
             min-width: 230px;
             width: 230px !important;
@@ -169,8 +168,7 @@
     input[type="text"],
     input[type="password"],
     input[type="email"],
-    .user-field.dropdown .select-kit.single-select {
-        width: 80%;
+    .user-field.dropdown .select-kit.single-select {        
         max-width: 300px;
         @include breakpoint(mobile-large) {
             max-width: 100%;
@@ -180,6 +178,12 @@
     .user-field.dropdown .instructions {
         margin-top: 0.5em;
     }
+    
+    .invite-form .user-fields .input-group .user-field span.name {
+        color: var(--primary) !important;
+        font-weight: normal;
+    }
+    
     //Hide full name input field on the invites signup page
     .name-input {
         display: none !important;

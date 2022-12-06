@@ -12,6 +12,7 @@ export default {
     withPluginApi("0.8", (api) => {
         //Modify invites-show controller to customize UI add Country logic for State and Province on invites User signup page [Date: 06/05/2021]
         api.modifyClass('controller:invites-show',{
+            pluginId : 'techcommunity-invites-show',
             firstNameField : null,
             lastNameField : null,
             companyField: null,
