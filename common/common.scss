@@ -92,7 +92,7 @@
             }
         }
         //Added to make the input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
-        //Fix the password's Show/Hide link alignment issue on create-account form [Modified by: Saurabh; Date: 04-01-2024]
+        //Fix the password's Show/Hide link alignment issue on create-account form [Modified by: Saurabh; Date: 04-01-2023]
         // 1. Modify the CSS selector to avoid the below css for the password-validation tip
         // 2. Increase the width of the fields from 230px to 244px
         :not(#password-validation).tip {
