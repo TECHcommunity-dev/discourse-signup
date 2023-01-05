@@ -29,8 +29,8 @@
         .select-kit-header.single-select-header.combo-box-header{
             padding: 0.72em 0.77em;
             //Modified to make the drop-down input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
-            min-width: 230px;
-            width: 230px !important;
+            min-width: 244px;
+            width: 244px !important;
             @include breakpoint(tablet) {
                 min-width: 250px;
                 width: 100% !important;
@@ -83,8 +83,8 @@
             margin-bottom: 0.5em !important;
             //Added to make the input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
             input {
-                min-width: 230px;
-                width: 230px !important;
+                min-width: 244px;
+                width: 244px !important;
                 @include breakpoint(tablet) {
                     min-width: 250px;
                     width: 100% !important;
@@ -92,9 +92,12 @@
             }
         }
         //Added to make the input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
-        .tip {
-            min-width: 230px;
-            width: 230px !important;
+        //Fix the password's Show/Hide link alignment issue on create-account form [Modified by: Saurabh; Date: 04-01-2023]
+        // 1. Modify the CSS selector to avoid the below css for the password-validation tip
+        // 2. Increase the width of the fields from 230px to 244px
+        :not(#password-validation).tip {
+            min-width: 244px;
+            width: 244px !important;
             @include breakpoint(tablet) {
                 min-width: 250px;
                 width: 100% !important;
