@@ -7,7 +7,7 @@
      .d-modal.create-account{
           .modal-inner-container{
                max-width: 88%;
-          }
+          } 
           /* Binjan; 2023.11.01; change class name create-account-body to create-account-form */
           .create-account-form{
                min-width: 88% !important;
@@ -36,8 +36,9 @@
           }
           .modal-inner-container{
                max-width: 825px;
+               width: 100%; /* Binjan; 2023.11.01 */
           }
-          /* Binjan; 2023.11.01; change class name create-account-body to create-account-form */
+           /* Binjan; 2023.11.01; change class name create-account-body to create-account-form */
           .create-account-form{
                min-width: 825px !important;
           }
@@ -70,8 +71,9 @@
           }
           .modal-inner-container{
                max-width: 600px;
+               width: 100%; /* Binjan; 2023.11.01 */
           }
-          /* Binjan; 2023.11.01; change class name create-account-body to create-account-form */
+           /* Binjan; 2023.11.01; change class name create-account-body to create-account-form */
           .create-account-form{
                min-width: 600px !important;
           }
