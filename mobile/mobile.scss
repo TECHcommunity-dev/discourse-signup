@@ -6,7 +6,8 @@
     .login-welcome-header {
         z-index: 999;
     }
-    .login-form form {
+    /* Binjan; 2023.12.04; signup form class selector changes to id selector */
+    #login-form {
         display: flex;
 
         .select-kit-header.single-select-header.combo-box-header {

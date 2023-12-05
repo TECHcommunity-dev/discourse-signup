@@ -1,107 +1,105 @@
 //discourse-signup - common-scss
 
 //------------- Signup Model Popup Changes ---------------//
-.d-modal.create-account .login-form {
+.d-modal.create-account #login-form {
     padding: 1em 0 0 1em !important;
+    margin-top: 0 !important; /* Binjan; 2023.12.04 */
     @include breakpoint(mobile-large) { 
         padding: 1em !important;
     }
-    form{
-        .input-group.create-account__fullname, .user-fields{
-            display:none !important;
-        }
-        .input-group.create-account-state,.input-group.create-account-province{
+    .input-group.create-account__fullname, .user-fields{
+        display:none !important;
+    }
+    .input-group.create-account-state,.input-group.create-account-province{
+        display: none;
+    }
+    .input-group.create-account-country,.input-group.create-account-state,.input-group.create-account-province{
+        label{
             display: none;
         }
-        .input-group.create-account-country,.input-group.create-account-state,.input-group.create-account-province{
-            label{
-                display: none;
-            }
+    }
+    //Add terms of service Checkbox after Province user-field  [Added by Ajroddin; Date: 05/10/2021]
+    .create-account-terms-of-service{
+        grid-column: 1;
+        @include breakpoint(mobile-large) {
+            margin-left: 0;
         }
-        //Add terms of service Checkbox after Province user-field  [Added by Ajroddin; Date: 05/10/2021]
-        .create-account-terms-of-service{
-            grid-column: 1;
-            margin-left: 15px;
-            @include breakpoint(mobile-large) {
-                margin-left: 0;
-            }
+    }
+    .select-kit-header.single-select-header.combo-box-header{
+        padding: 0.72em 0.77em;
+        //Modified to make the drop-down input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
+        min-width: 244px;
+        width: 244px !important;
+        @include breakpoint(tablet) {
+            min-width: 250px;
+            width: 100% !important;
         }
-        .select-kit-header.single-select-header.combo-box-header{
-            padding: 0.72em 0.77em;
-            //Modified to make the drop-down input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
-            min-width: 244px;
-            width: 244px !important;
-            @include breakpoint(tablet) {
-                min-width: 250px;
-                width: 100% !important;
-            }
-            box-shadow: none;
-            margin-bottom: 0.25em;
+        box-shadow: none;
+        margin-bottom: 0.25em;
 
-            &[data-value|=""] {
-                color: var(--primary-medium);
-            }  
-            &[data-value|=""] span.name::after {
-                content:"*";
-                vertical-align: top;
-                color: var(--danger);
-                font-weight: bold;
-                margin-left: 0.25em;
-            }
-         }
-        .user-field .select-kit{
-            z-index: 99999;
+        &[data-value|=""] {
+            color: var(--primary-medium);
+        }  
+        &[data-value|=""] span.name::after {
+            content:"*";
+            vertical-align: top;
+            color: var(--danger);
+            font-weight: bold;
+            margin-left: 0.25em;
         }
-        //To make the height of the dropdown field same as text input fields [Added by: Saurabh; Date: 10-09-2021]
-        .user-field.dropdown .select-kit .select-kit-header .select-kit-header-wrapper{
-            min-height: auto !important;
         }
-        label.more-info{
-            color: var(--primary-medium) !important;
+    .user-field .select-kit{
+        z-index: 99999;
+    }
+    //To make the height of the dropdown field same as text input fields [Added by: Saurabh; Date: 10-09-2021]
+    .user-field.dropdown .select-kit .select-kit-header .select-kit-header-wrapper{
+        min-height: auto !important;
+    }
+    label.more-info{
+        color: var(--primary-medium) !important;
+    }
+    //To hide the astric sign after email, username and password filed which was previously added by Softwareag team. 
+    //As new newer release Discourse Team added astric sign in discourse source code.
+    label[for="new-account-email"],
+    label[for="new-account-username"],
+    label[for="new-account-password"] {
+        &:after {
+            display: none !important;
         }
-        //To hide the astric sign after email, username and password filed which was previously added by Softwareag team. 
-        //As new newer release Discourse Team added astric sign in discourse source code.
-        label[for="new-account-email"],
-        label[for="new-account-username"],
-        label[for="new-account-password"] {
-            &:after {
-                display: none !important;
-            }
+    }
+    //To add the asterisk sign after Company if select Country is Banned. [Added by Saurabh; Date: 22/06/2021]
+    label[for="new-account-company"]{
+        &::after{
+            content: attr(data-value);
+            vertical-align: top;
+            color: var(--danger);
+            font-weight: bold;
+            margin-left: 0.25em;
         }
-        //To add the asterisk sign after Company if select Country is Banned. [Added by Saurabh; Date: 22/06/2021]
-        label[for="new-account-company"]{
-            &::after{
-                content: attr(data-value);
-                vertical-align: top;
-                color: var(--danger);
-                font-weight: bold;
-                margin-left: 0.25em;
-            }
-        }
-        //To have less space between fields in signup modal [Added by: Saurabh; Date: 10-09-2021]
-        .input-group {
-            margin-bottom: 0.5em !important;
-            //Added to make the input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
-            input {
-                min-width: 244px;
-                width: 244px !important;
-                @include breakpoint(tablet) {
-                    min-width: 250px;
-                    width: 100% !important;
-                }
-            }
-        }
+    }
+    //To have less space between fields in signup modal [Added by: Saurabh; Date: 10-09-2021]
+    .input-group {
+        margin-bottom: 0.5em !important;
         //Added to make the input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
-        //Fix the password's Show/Hide link alignment issue on create-account form [Modified by: Saurabh; Date: 04-01-2023]
-        // 1. Modify the CSS selector to avoid the below css for the password-validation tip
-        // 2. Increase the width of the fields from 230px to 244px
-        :not(#password-validation).tip {
+        input {
             min-width: 244px;
             width: 244px !important;
             @include breakpoint(tablet) {
                 min-width: 250px;
                 width: 100% !important;
             }
+        }
+    }
+    //Added to make the input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
+    //Fix the password's Show/Hide link alignment issue on create-account form [Modified by: Saurabh; Date: 04-01-2023]
+    // 1. Modify the CSS selector to avoid the below css for the password-validation tip
+    // 2. Increase the width of the fields from 230px to 244px
+    :not(#password-validation).tip {
+        min-width: 244px;
+        width: 244px !important;
+        @include breakpoint(tablet) {
+            min-width: 250px;
+            width: 100% !important;
         }
     }
 }
@@ -113,25 +111,39 @@
         background-color: var(--highlight) !important;
         color: #011f3d;
     }
+
+    /* Binjan; 2023.12.04; adust padding */
+    .login-left-side {
+        padding: 2rem 1rem !important;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    
+    .login-right-side {
+        padding: 3.5rem 1rem;
+        #login-buttons {
+            min-width: 200px;
+            min-height: 75px;
+        }
+    }
 }
 
 /*Google OAuth Signup Model Popup Changes*/
-.d-modal.create-account .create-account-form.google_oauth2 .login-form {
-    form{
-        .input-group.create-account-associate-link {
-            grid-column: 1 / 3;
-            padding-bottom: 1em;
-        }
-        .input-group.create-account__password {
-            display:none !important;
-        }
-        .create-account-terms-of-service {
-            grid-column: 1;
-            padding: 0 2em;
-            margin-left: 0;
-            @include breakpoint(mobile-large) {
-                padding: 0 0;
-            }
+/* Binjan; 2023.12.04; signup form class selector changes to id selector */
+.d-modal.create-account .create-account-form.google_oauth2 #login-form {
+    .input-group.create-account-associate-link {
+        grid-column: 1 / 3;
+        padding-bottom: 1em;
+    }
+    .input-group.create-account__password {
+        display:none !important;
+    }
+    .create-account-terms-of-service {
+        grid-column: 1;
+        padding: 0 2em;
+        margin-left: 0;
+        @include breakpoint(mobile-large) {
+            padding: 0 0;
         }
     }
 }
@@ -192,7 +204,7 @@
         display: none !important;
     }
     .tip {
-        display: block;
+        display: unset; /* Binjan; 2023.12.04; change to solve extra space issue; change "block" to "unset" */
     }
     .tip:empty {
         display: none;
