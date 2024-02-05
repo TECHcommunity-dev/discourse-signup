@@ -112,7 +112,7 @@ export default {
 
         //Modify create-account controller to add Country logic for State and Province on Create Account page [By Webdirekt on 12-11-2020]
         //Modify create-account controller to customize UI of Create User Form [18-11-2020].
-        api.modifyClass('controller:create-account',{
+        api.modifyClass('component:modal/create-account',{
             pluginId: 'techcommunity-signup',
             firstNameField : null,
             lastNameField : null,
