@@ -2,8 +2,8 @@
 
 //------------- Signup Model Popup Changes ---------------//
 .d-modal.create-account #login-form {
-    padding: 1em 0 0 1em !important;
-    margin-top: 0 !important; /* Binjan; 2023.12.04 */
+    padding: 1em 0 0 0 !important;
+    margin: 0em 0em 1.2em -0.5em !important;
     @include breakpoint(mobile-large) { 
         padding: 1em !important;
     }
