@@ -119,14 +119,27 @@
         overflow-x: hidden;
 
         .login-welcome-header {			
-			.login-title, .waving-hand {
-				display: none;
-			}
-			
-			.login-subheader {
-				font-weight: 600;
-			}
+		.login-title, .waving-hand {
+			display: none;
 		}
+			
+		.login-subheader {
+			font-weight: 600;
+		}
+	}
+
+	.already-have-account {
+        	display: none;
+    	}
+    
+    	.d-modal__footer-buttons {
+        	flex-direction: row !important;
+        	gap: 0.3rem;
+        
+        	button, hr {
+            		width: unset !important;
+        	}
+    	}
     }
     
     .login-right-side {
