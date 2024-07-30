@@ -79,7 +79,7 @@
     }
     //To have less space between fields in signup modal [Added by: Saurabh; Date: 10-09-2021]
     .input-group {
-        margin-bottom: 0.5em !important;
+        margin-bottom: 0em !important;
         //Added to make the input fields bit narrower [Added by: Saurabh; Date: 13-09-2021]
         input {
             min-width: 244px;
@@ -114,9 +114,19 @@
 
     /* Binjan; 2023.12.04; adust padding */
     .login-left-side {
-        padding: 2rem 1rem !important;
+        padding: 1rem 1rem !important;
         overflow-y: auto;
         overflow-x: hidden;
+
+        .login-welcome-header {			
+			.login-title, .waving-hand {
+				display: none;
+			}
+			
+			.login-subheader {
+				font-weight: 600;
+			}
+		}
     }
     
     .login-right-side {
