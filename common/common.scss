@@ -107,15 +107,6 @@
 /* Apply CSS for the “Create your account” link on Signup form [Added by Ajroddin; Date: 10/09/2021] */
 .d-modal.create-account {
     //To have the Log In button with green background in signup modal [Added by: Saurabh; Date: 10-09-2021]
-    button.signup-page-cta__login{
-        background-color: var(--highlight) !important;
-        color: #011f3d;
-	font-size: var(--font-up-1) !important;
-    }
-
-    button.signup-page-cta__signup {
-        font-size: var(--font-up-1) !important;
-    }
 
     /* Binjan; 2023.12.04; adust padding */
     .login-left-side {
@@ -132,6 +123,16 @@
 			font-weight: 600;
 		}
 	}
+
+	button.signup-page-cta__login{
+	        background-color: var(--highlight) !important;
+	        color: #011f3d;
+		font-size: var(--font-up-1) !important;
+    	}
+
+        button.signup-page-cta__signup {
+        	font-size: var(--font-up-1) !important;
+    	}
 
 	.signup-page-cta__existing-account {
         	display: none;
