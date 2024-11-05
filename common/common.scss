@@ -3,7 +3,7 @@
 //------------- Signup Model Popup Changes ---------------//
 .d-modal.create-account #login-form {
     padding: 1em 0 0 0 !important;
-    margin: 0em 0em 1.2em -0.4em !important;
+    margin: -1.4em 0em -0.3em -0.4em !important;
     @include breakpoint(mobile-large) { 
         padding: 1em !important;
     }
@@ -107,9 +107,14 @@
 /* Apply CSS for the “Create your account” link on Signup form [Added by Ajroddin; Date: 10/09/2021] */
 .d-modal.create-account {
     //To have the Log In button with green background in signup modal [Added by: Saurabh; Date: 10-09-2021]
-    button#login-link{
+    button.signup-page-cta__login{
         background-color: var(--highlight) !important;
         color: #011f3d;
+	font-size: var(--font-up-1) !important;
+    }
+
+    button.signup-page-cta__signup {
+        font-size: var(--font-up-1) !important;
     }
 
     /* Binjan; 2023.12.04; adust padding */
@@ -128,11 +133,11 @@
 		}
 	}
 
-	.already-have-account {
+	.signup-page-cta__existing-account {
         	display: none;
     	}
     
-    	.d-modal__footer-buttons {
+    	.signup-page-cta__buttons {
         	flex-direction: row !important;
         	gap: 0.3rem;
         
