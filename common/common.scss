@@ -156,6 +156,29 @@
     }
 }
 
+
+.d-modal.login-modal {
+    .login-left-side {
+        .login-page-cta__no-account-yet {
+            display: none;
+        }
+        
+        .login-page-cta__buttons {
+        	flex-direction: row !important;
+        	gap: 0.3rem;
+        
+        	button, hr {
+            		width: unset !important;
+        	}
+    	}
+    	
+        button.login-page-cta__login,
+        button.login-page-cta__signup {
+            font-size: var(--font-up-1) !important;
+        }
+    }
+}
+
 /*Google OAuth Signup Model Popup Changes*/
 /* Binjan; 2023.12.04; signup form class selector changes to id selector */
 .d-modal.create-account .create-account-form.google_oauth2 #login-form {
